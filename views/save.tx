@@ -1,0 +1,10 @@
+: cascade base
+: around content -> {
+<h1><: $c.stash.site_name :></h1>
+
+<p>Message below saved. thanks :)
+<br>
+<: $text :>
+<br>
+: }
+

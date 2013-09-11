@@ -1,0 +1,16 @@
+: cascade base
+: around content -> {
+<h1><: $greeting :> <: $c.stash.site_name :></h1>
+<p>Enter a message and click "Save" if you want to store it to your mysql db :)
+<br>
+
+<form id="save-form" method="post" action="<: $c.req.uri_for('/save') :>">
+<input type="text" name="tbox" value=""><br>
+
+<div class="actions">
+<input type="button" class="btn primary" value="Save"><br>
+</div>
+</form>
+
+: }
+

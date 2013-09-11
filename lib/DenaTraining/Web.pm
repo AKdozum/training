@@ -38,6 +38,15 @@ post '/save' => sub {
         messages => $result->errors });
   }
   my $teng = &init;
+ 
+  $teng->do(q{
+    CREATE TABLE IF NOT EXISTS `comments` (
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `comment` text NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB  DEFAULT CHARSET=utf8
+    });
+
   $teng->insert('comments' => {
       'comment' => $result->valid->get('tbox')
     });
@@ -62,7 +71,6 @@ sub init {
 
   return $teng;
 }
-
 
 
 1;
